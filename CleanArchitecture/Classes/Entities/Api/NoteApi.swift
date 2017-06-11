@@ -16,5 +16,6 @@ struct NoteApi {
 }
 
 extension NoteApi {
-    
+
+    /// Methods and properties will be here
 }
