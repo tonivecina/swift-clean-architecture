@@ -238,9 +238,7 @@ class NoteModule {
 
 ### View
 
-View
-
-It's de viewController of module. All UI layer is contained here. It's very important the code be segmented by protocols in extensions. For example, if the view contains UITextFields and UITableView this view will needs to use protocols like UITextFieldDelegate or UITableViewDataSource and UITableViewDelegate. This protocols must be segmented in extension files.
+It's the viewController of module. All UI layer is contained here. It's very important the code be segmented by protocols in extensions. For example, if the view contains UITextFields and UITableView this view will needs to use protocols like UITextFieldDelegate or UITableViewDataSource and UITableViewDelegate. This protocols must be segmented in extension files.
 
 If the viewController contains IBActions, you must create a new extension file.
 
@@ -304,7 +302,7 @@ This class is the core of module to connect all elements with the view. If the p
 
 If your process file have implemented some protocols, please... you must create extensions files.
 
-All elements inside of this architecture paradigm will be initialized and managed here, this mean the process file is the core of the module.
+All elements inside of this architecture paradigm will be initialized and managed here, this mean the process class is the core of the module.
 
 This is simple example for the process of HomeModule:
 
