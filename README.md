@@ -190,3 +190,145 @@ extension NoteApi {
 Remember, Entity folder should be:
 
 ![](https://raw.githubusercontent.com/tonivecina/swift-clean-architecture/master/images/screen_folder_entities.png)
+
+## Modules
+
+There are some architectures defined to use under iOS/OSX projects like MVC, MVP, MVVM or VIPER. If you have experience with this architectures, the module architecture will be familiar for you.
+
+The module is segmented in different elements:
+
+### ModuleFile
+
+This class is responsible to configure principal elements of module and contains static parameters used by other clases inside of module. In addition, this class will return its view element.
+
+This example is the HomeModule file:
+
+```Swift
+class HomeModule {
+
+    class var view: HomeViewController {
+        let view = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        view.processor = HomeProcessor(view: view)
+
+        return view
+    }
+}
+```
+
+... or NoteModule file:
+
+```Swift
+class NoteModule {
+
+    class func view(note: Note?, editingDelegate: NoteEditingProcess) -> NoteViewController {
+        let view = NoteViewController(nibName: "NoteViewController", bundle: nil)
+        view.note = note
+        view.processor = NoteProcessor(view: view, noteEditingDelegate: editingDelegate)
+        
+        return view
+    }
+
+
+    enum Placeholder {
+        static let title = "Insert title here"
+        static let content = "Insert description here"
+    }
+}
+```
+
+### View
+
+View
+
+It's de viewController of module. All UI layer is contained here. It's very important the code be segmented by protocols in extensions. For example, if the view contains UITextFields and UITableView this view will needs to use protocols like UITextFieldDelegate or UITableViewDataSource and UITableViewDelegate. This protocols must be segmented in extension files.
+
+If the viewController contains IBActions, you must create a new extension file.
+
+![](https://raw.githubusercontent.com/tonivecina/swift-clean-architecture/master/images/screen_folder_modules_view.png)
+
+### Routes
+
+All navigations and connections with other modules are defined here. Look at this example:
+
+```Swift
+class HomeRoutes {
+
+    weak var view: HomeViewController?
+
+    init(view: HomeViewController?) {
+        self.view = view
+    }
+}
+
+extension HomeRoutes {
+
+    func presentNoteModule(note: Note?, delegate: NoteEditingProcess) {
+        let noteView = NoteModule.view(note: note, editingDelegate: delegate)
+        view?.present(noteView, animated: true, completion: nil)
+    }
+    
+}
+```
+
+### Data Manager
+
+This is the final element of architecture paradigm. It's responsible to manage entities and offer it to process class.
+
+```Swift
+class HomeDataManager {
+    lazy fileprivate var notes = [Note]()
+    lazy fileprivate var noteCoreDataStorage = NoteCoreDataStorage()
+}
+
+extension HomeDataManager {
+
+    func getNotes() -> [Note] {
+        do {
+            notes = try noteCoreDataStorage.getAll()
+
+        } catch {
+            notes = []
+        }
+
+        return notes
+    }
+
+}
+```
+
+### Observers
+
+### Processor
+
+This class is the core of module to connect all elements with the view. If the process contains long logical, it's recommendable use extension files too.
+
+If your process file have implemented some protocols, please... you must create extensions files.
+
+All elements inside of this architecture paradigm will be initialized and managed here, this mean the process file is the core of the module.
+
+This is simple example for the process of HomeModule:
+
+```Swift
+class HomeProcessor {
+
+    weak var view: HomeViewController?
+    lazy fileprivate var dataManager = HomeDataManager()
+
+    var routes: HomeRoutes!
+
+    init(view: HomeViewController?) {
+        self.view = view
+        self.routes = HomeRoutes(view: self.view)
+    }
+
+}
+
+extension HomeProcessor {
+
+    func viewDidLoad() {
+        view?.notes = dataManager.getNotes()
+        view?.reloadData()
+    }
+    
+}
+```
