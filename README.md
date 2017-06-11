@@ -332,3 +332,7 @@ extension HomeProcessor {
     
 }
 ```
+
+This architecture paradigm is:
+
+![](https://raw.githubusercontent.com/tonivecina/swift-clean-architecture/master/images/screen_modules_paradigm.png)
