@@ -13,7 +13,6 @@
 		3A0256BA1EED5B2D00F4E7E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A0256B81EED5B2D00F4E7E3 /* LaunchScreen.storyboard */; };
 		3A0256C51EED5B2D00F4E7E3 /* CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256C41EED5B2D00F4E7E3 /* CleanArchitectureTests.swift */; };
 		3A0256D01EED5B2D00F4E7E3 /* CleanArchitectureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256CF1EED5B2D00F4E7E3 /* CleanArchitectureUITests.swift */; };
-		3A0256EC1EED5DE700F4E7E3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256EA1EED5DE700F4E7E3 /* Note.swift */; };
 		3A0256EF1EED5E2400F4E7E3 /* HomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256EE1EED5E2400F4E7E3 /* HomeModule.swift */; };
 		3A0256F31EED5E5A00F4E7E3 /* HomeProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256F21EED5E5A00F4E7E3 /* HomeProcessor.swift */; };
 		3A0256F61EED5E8200F4E7E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0256F41EED5E8200F4E7E3 /* HomeViewController.swift */; };
@@ -38,6 +37,8 @@
 		3A02572F1EED9B4E00F4E7E3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02572E1EED9B4E00F4E7E3 /* String.swift */; };
 		3A0257321EED9D0000F4E7E3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0257311EED9D0000F4E7E3 /* Configuration.swift */; };
 		3A0257351EED9E0700F4E7E3 /* NoteApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0257341EED9E0700F4E7E3 /* NoteApi.swift */; };
+		3A61C7EE1EEDAD1800656D33 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61C7ED1EEDAD1800656D33 /* Note.swift */; };
+		3A61C7F01EEDAD2B00656D33 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61C7EF1EEDAD2B00656D33 /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,6 @@
 		3A0256CB1EED5B2D00F4E7E3 /* CleanArchitectureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0256CF1EED5B2D00F4E7E3 /* CleanArchitectureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureUITests.swift; sourceTree = "<group>"; };
 		3A0256D11EED5B2D00F4E7E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A0256EA1EED5DE700F4E7E3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Local/Note.swift; sourceTree = "<group>"; };
 		3A0256EE1EED5E2400F4E7E3 /* HomeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModule.swift; sourceTree = "<group>"; };
 		3A0256F21EED5E5A00F4E7E3 /* HomeProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeProcessor.swift; sourceTree = "<group>"; };
 		3A0256F41EED5E8200F4E7E3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +95,8 @@
 		3A02572E1EED9B4E00F4E7E3 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3A0257311EED9D0000F4E7E3 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3A0257341EED9E0700F4E7E3 /* NoteApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteApi.swift; sourceTree = "<group>"; };
+		3A61C7ED1EEDAD1800656D33 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		3A61C7EF1EEDAD2B00656D33 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Credentials.swift; path = Local/Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,18 +207,19 @@
 			isa = PBXGroup;
 			children = (
 				3A0257331EED9DE500F4E7E3 /* Api */,
-				3A0256E51EED5D2000F4E7E3 /* Local */,
+				3A0256E51EED5D2000F4E7E3 /* CoreData */,
+				3A61C7EC1EEDACB900656D33 /* Local */,
 			);
 			name = Entities;
 			path = Classes/Entities;
 			sourceTree = "<group>";
 		};
-		3A0256E51EED5D2000F4E7E3 /* Local */ = {
+		3A0256E51EED5D2000F4E7E3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				3A0256EA1EED5DE700F4E7E3 /* Note.swift */,
+				3A61C7ED1EEDAD1800656D33 /* Note.swift */,
 			);
-			name = Local;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		3A0256F01EED5E2800F4E7E3 /* View */ = {
@@ -412,6 +415,14 @@
 			path = UILabels;
 			sourceTree = "<group>";
 		};
+		3A61C7EC1EEDACB900656D33 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				3A61C7EF1EEDAD2B00656D33 /* Credentials.swift */,
+			);
+			name = Local;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -548,16 +559,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A0257181EED872A00F4E7E3 /* NoteViewController+UITextViews.swift in Sources */,
-				3A0256EC1EED5DE700F4E7E3 /* Note.swift in Sources */,
 				3A02572F1EED9B4E00F4E7E3 /* String.swift in Sources */,
 				3A02572C1EED904600F4E7E3 /* NoteCoreDataStorage.swift in Sources */,
 				3A0256B51EED5B2D00F4E7E3 /* CleanArchitecture.xcdatamodeld in Sources */,
+				3A61C7F01EEDAD2B00656D33 /* Credentials.swift in Sources */,
 				3A0257221EED899100F4E7E3 /* HomeProcessor+NoteEditingProcess.swift in Sources */,
 				3A0257321EED9D0000F4E7E3 /* Configuration.swift in Sources */,
 				3A02570E1EED82CC00F4E7E3 /* NoteViewController.swift in Sources */,
 				3A0256F31EED5E5A00F4E7E3 /* HomeProcessor.swift in Sources */,
 				3A0257111EED82E500F4E7E3 /* NoteModule.swift in Sources */,
 				3A0256EF1EED5E2400F4E7E3 /* HomeModule.swift in Sources */,
+				3A61C7EE1EEDAD1800656D33 /* Note.swift in Sources */,
 				3A0256F91EED5F2600F4E7E3 /* HomeViewController+UITableViews.swift in Sources */,
 				3A0256AD1EED5B2D00F4E7E3 /* AppDelegate.swift in Sources */,
 				3A0257351EED9E0700F4E7E3 /* NoteApi.swift in Sources */,

@@ -9,10 +9,8 @@
 import Foundation
 
 class HomeDataManager {
-
     lazy fileprivate var notes = [Note]()
     lazy fileprivate var noteCoreDataStorage = NoteCoreDataStorage()
-    
 }
 
 extension HomeDataManager {
@@ -27,11 +25,5 @@ extension HomeDataManager {
 
         return notes
     }
-
-
-
-//    func addNewNote(title: String, content: String) throws -> Note {
-//        return try noteCoreDataManager.addNote(title: title, content: content)
-//    }
 
 }
