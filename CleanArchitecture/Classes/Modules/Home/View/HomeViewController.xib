@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CleanArchitecture" customModuleProvider="target">
+            <connections>
+                <outlet property="notesTableView" destination="f03-We-E2p" id="T6D-b7-Nyc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f03-We-E2p">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkQ-W0-tfI">
+                    <rect key="frame" x="236" y="396" width="60" height="60"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="0t4-cy-jTd"/>
+                        <constraint firstAttribute="width" constant="60" id="bUc-sO-Zat"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="pressAdd:" destination="-1" eventType="touchUpInside" id="m5R-jt-7xC"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LkQ-W0-tfI" secondAttribute="trailing" constant="24" id="BCh-BI-efu"/>
+                <constraint firstAttribute="bottom" secondItem="LkQ-W0-tfI" secondAttribute="bottom" constant="24" id="DOM-ST-i6A"/>
+                <constraint firstAttribute="bottom" secondItem="f03-We-E2p" secondAttribute="bottom" id="F08-IX-m74"/>
+                <constraint firstItem="f03-We-E2p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RdL-q9-sqv"/>
+                <constraint firstItem="f03-We-E2p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gAn-Wf-8yP"/>
+                <constraint firstAttribute="trailing" secondItem="f03-We-E2p" secondAttribute="trailing" id="uhC-pF-2XU"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
