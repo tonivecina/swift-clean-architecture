@@ -18,8 +18,11 @@ This guide will show how to build a Xcode project with a clean architecture with
 	* [Api](#api-entity)
 
 * [Modules]()
-	* [Folders Segmentation]()
-	* [Architecture]()
+	* [Module file](#modulefile)
+	* [View](#view)
+	* [Routes](#routes)
+	* [Data Manager](#data-manager)
+	* [Processor](#processor)
 
 * [Services]()
 
@@ -334,3 +337,82 @@ extension HomeProcessor {
 This architecture paradigm is:
 
 ![](https://raw.githubusercontent.com/tonivecina/swift-clean-architecture/master/images/screen_modules_paradigm.png)
+
+## Services
+
+If your project needs location services, network services... Please, not duplicate code. We create shared services for views that need it.
+
+This example is a location service:
+
+```Swift
+protocol LocationDelegate: class {
+    func onLocationUnavailable()
+    func onLocationDenied()
+    func onLocationSuccess(_ location: CLLocation)
+}
+
+class LocationService: NSObject {
+
+    weak fileprivate var delegate: LocationDelegate!
+    fileprivate var locationManager: CLLocationManager?
+
+    init(delegate: LocationDelegate) {
+        super.init()
+        self.delegate = delegate
+    }
+}
+
+extension LocationService: CLLocationManagerDelegate {
+
+    func get() {
+        Log.set(message: "Trying to get location...")
+
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        Log.set(message: "Location Authorization: \(authorizationStatus)")
+
+        switch authorizationStatus {
+        case .authorizedWhenInUse,
+             .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+
+            if #available(iOS 9.0, *) {
+                return locationManager!.requestLocation()
+
+            } else {
+                return locationManager!.startUpdatingLocation()
+            }
+
+        case .denied:
+            return delegate.onLocationDenied()
+
+        default:
+            return delegate.onLocationUnavailable()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        delegate.onLocationUnavailable()
+        return Log.set(message: String(describing: error))
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+
+        guard locations.count > 0, let location = locations.first else {
+            delegate.onLocationUnavailable()
+
+            return Log.set(message: "ERROR: Location not found")
+        }
+
+        locationManager = nil
+        delegate.onLocationSuccess(location)
+
+        return Log.set(message: "SUCCESS: Location found.\n\(location.debugDescription)")
+    }
+}
+```
+
+## Views
