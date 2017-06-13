@@ -467,3 +467,8 @@ extension IERequestCell {
     }
 }
 ```
+
+## References
+
+* [The Official raywenderlich.com Swift Style Guide.](https://github.com/raywenderlich/swift-style-guide)
+* [Apple Markup Formatting Reference](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html)
