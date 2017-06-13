@@ -24,9 +24,9 @@ This guide will show how to build a Xcode project with a clean architecture with
 	* [Data Manager](#data-manager)
 	* [Processor](#processor)
 
-* [Services]()
+* [Services](#services)
 
-* [Views]()
+* [Views](#views)
 
 ## Folders
 
@@ -416,3 +416,54 @@ extension LocationService: CLLocationManagerDelegate {
 ```
 
 ## Views
+
+For a good design is necessary that we have custom views like UITexts, UIButtons, etc. This custom classes must be localized here.
+
+This is a simple example for an UITableViewCell:
+
+```Swift
+class IERequestCell: UITableViewCell {
+
+    @IBOutlet fileprivate weak var nameLabel: UILabel!
+    @IBOutlet fileprivate weak var dateLabel: UILabel!
+    @IBOutlet fileprivate weak var descriptionLabel: UILabel!
+    @IBOutlet fileprivate weak var badgeLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        nameLabel.text = nil
+        nameLabel.numberOfLines = 1
+
+        dateLabel.text = nil
+        dateLabel.numberOfLines = 1
+
+        descriptionLabel.text = nil
+
+        badgeLabel.text = String(0)
+        badgeLabel.numberOfLines = 1
+        badgeLabel.isHidden = true
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        selectionStyle = .none
+    }
+}
+
+extension IERequestCell {
+
+    func bind(request: RequestItem) {
+        nameLabel.text = request.title
+
+        if let date = request.date {
+            let text = String.dateStringWithFormat(date, format: "dd MMM yyyy")
+            dateLabel.text = text.uppercased()
+        }
+
+        descriptionLabel.text = request.subtitle
+        badgeLabel.text = String(request.unreadCount)
+        badgeLabel.isHidden = request.unreadCount == 0
+    }
+}
+```
